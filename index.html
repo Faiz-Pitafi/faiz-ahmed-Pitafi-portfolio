@@ -1,1293 +1,1941 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Faiz Ahmed | Mathematics & Machine Learning</title>
-
-    <meta name="description"
-          content="Faiz Ahmed — BS Mathematics student interested in Computational Mathematics, ODE, PDE, Machine Learning and Data Science.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background: #ffffff;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* ================= NAVBAR ================= */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.96);
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #111827;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            color: #4b5563;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        /* ================= GENERAL ================= */
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 25px;
-        }
-
-        section {
-            padding: 90px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: #111827;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #6b7280;
-        }
-
-        .card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8fafc, #eef4ff);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.4fr 0.8fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .hero-text small {
-            color: #2563eb;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .hero-text h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin: 12px 0 20px;
-            color: #111827;
-        }
-
-        .hero-text h2 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #4b5563;
-            margin-bottom: 25px;
-        }
-
-        .hero-text p {
-            max-width: 700px;
-            color: #4b5563;
-            font-size: 1.05rem;
-        }
-
-        .hero-buttons {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
-
-        .btn-primary {
-            background: #2563eb;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-        }
-
-        .btn-secondary {
-            border: 1px solid #cbd5e1;
-            background: white;
-        }
-
-        .btn-secondary:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-
-        .profile-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-image {
-            width: 320px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 22px;
-            border: 8px solid white;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.12);
-        }
-
-        /* ================= ABOUT ================= */
-
-        .about-text {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            color: #4b5563;
-            font-size: 1.05rem;
-        }
-
-        /* ================= EDUCATION ================= */
-
-        .education-card {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        .education-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .education-card .degree {
-            color: #2563eb;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .focus-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .tag {
-            padding: 8px 13px;
-            background: #eff6ff;
-            color: #1d4ed8;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* ================= SKILLS ================= */
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 15px;
-            color: #111827;
-        }
-
-        .skill-card ul {
-            list-style: none;
-        }
-
-        .skill-card li {
-            padding: 7px 0;
-            color: #4b5563;
-        }
-
-        /* ================= PROJECTS ================= */
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .project-card h3 {
-            margin-bottom: 10px;
-            color: #111827;
-        }
-
-        .project-card p {
-            color: #6b7280;
-            margin-bottom: 15px;
-        }
-
-        .project-tech {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 18px;
-        }
-
-        /* ================= RESEARCH ================= */
-
-        .research-card {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .research-card h3 {
-            color: #111827;
-            margin-bottom: 10px;
-        }
-
-        .research-card p {
-            color: #4b5563;
-        }
-
-        /* ================= EXPERIENCE ================= */
-
-        .timeline {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        .timeline-item {
-            border-left: 3px solid #2563eb;
-            padding: 5px 0 30px 25px;
-            margin-bottom: 10px;
-        }
-
-        .timeline-item h3 {
-            color: #111827;
-        }
-
-        .timeline-item .date {
-            color: #2563eb;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .timeline-item p {
-            color: #6b7280;
-            margin-top: 8px;
-        }
-
-        /* ================= AWARDS ================= */
-
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .award-card {
-            text-align: center;
-        }
-
-        .award-icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-        }
-
-        .award-card h3 {
-            margin-bottom: 8px;
-        }
-
-        .award-card p {
-            color: #6b7280;
-        }
-
-        /* ================= CERTIFICATIONS ================= */
-
-        .certificate-note {
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 30px;
-            color: #6b7280;
-        }
-
-        .cert-category {
-            margin-bottom: 25px;
-        }
-
-        .cert-category h3 {
-            margin-bottom: 12px;
-            color: #111827;
-        }
-
-        /* ================= LEADERSHIP ================= */
-
-        .leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        /* ================= CONTACT ================= */
-
-        .contact-box {
-            max-width: 750px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #111827;
-            color: #d1d5db;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 850px) {
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text p {
-                margin: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .profile-wrapper {
-                order: -1;
-            }
-
-            .skills-grid,
-            .awards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid,
-            .leadership-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-links {
-                justify-content: center;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Faiz Ahmed | Mathematics & Machine Learning</title>
+
+<meta name="description"
+content="Faiz Ahmed — BS Mathematics student focused on Computational Mathematics, ODE, PDE, Machine Learning and Data Science.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --navy:#08111f;
+    --navy2:#0d1b2f;
+    --blue:#3b82f6;
+    --blue2:#60a5fa;
+    --white:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --light:#f7f9fc;
+    --border:#e2e8f0;
+    --card:#ffffff;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    color:var(--text);
+    background:#ffffff;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+section{
+    padding:105px 0;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    background:rgba(8,17,31,.92);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-inner{
+    min-height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:"Space Grotesk",sans-serif;
+    color:white;
+    font-size:1.35rem;
+    font-weight:700;
+    letter-spacing:-.5px;
+}
+
+.logo span{
+    color:var(--blue2);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:27px;
+}
+
+.nav-links a{
+    color:#cbd5e1;
+    font-size:.86rem;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    padding-top:120px;
+    background:
+        radial-gradient(circle at 80% 25%,rgba(59,130,246,.20),transparent 30%),
+        radial-gradient(circle at 15% 80%,rgba(96,165,250,.10),transparent 30%),
+        linear-gradient(135deg,#06101e,#0c1a2d 65%,#10243c);
+    color:white;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:70px;
+    align-items:center;
+}
+
+.hero-label{
+    display:inline-flex;
+    padding:7px 13px;
+    border:1px solid rgba(96,165,250,.35);
+    border-radius:30px;
+    color:#93c5fd;
+    background:rgba(59,130,246,.08);
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(4rem,8vw,7.5rem);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin:25px 0;
+}
+
+.hero h1 span{
+    color:var(--blue2);
+}
+
+.hero-subtitle{
+    max-width:850px;
+    font-size:1.35rem;
+    line-height:1.6;
+    color:#cbd5e1;
+    font-weight:500;
+}
+
+.hero-description{
+    max-width:720px;
+    color:#94a3b8;
+    margin-top:20px;
+    font-size:1rem;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    margin-top:32px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 22px;
+    border-radius:10px;
+    font-weight:700;
+    font-size:.9rem;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--blue);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#2563eb;
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    border:1px solid #334155;
+    color:white;
+    background:rgba(255,255,255,.03);
+}
+
+.btn-outline:hover{
+    border-color:#60a5fa;
+    transform:translateY(-2px);
+}
+
+.profile-area{
+    display:flex;
+    justify-content:center;
+    position:relative;
+}
+
+.profile-ring{
+    padding:10px;
+    border:1px solid rgba(96,165,250,.4);
+    border-radius:35px;
+    background:rgba(255,255,255,.04);
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.profile-image{
+    width:340px;
+    height:420px;
+    object-fit:cover;
+    border-radius:28px;
+}
+
+/* =========================================================
+   SECTION HEADERS
+========================================================= */
+
+.section-label{
+    color:var(--blue);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:.75rem;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.section-heading{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(2.2rem,4vw,3.4rem);
+    letter-spacing:-1.5px;
+    color:#0f172a;
+}
+
+.section-description{
+    max-width:650px;
+    color:var(--muted);
+    margin-top:12px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    background:white;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:70px;
+    align-items:start;
+}
+
+.about-intro{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.55rem;
+    line-height:1.4;
+    color:#0f172a;
+}
+
+.about-text{
+    color:var(--muted);
+}
+
+.about-text p+p{
+    margin-top:18px;
+}
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education{
+    background:var(--light);
+}
+
+.education-card{
+    margin-top:45px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:38px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:30px;
+    box-shadow:0 15px 45px rgba(15,23,42,.05);
+}
+
+.education-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.65rem;
+}
+
+.degree{
+    color:var(--blue);
+    font-weight:800;
+    margin:5px 0 12px;
+}
+
+.education-card p{
+    color:var(--muted);
+}
+
+.education-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:22px;
+}
+
+.tag{
+    background:#eff6ff;
+    color:#1d4ed8;
+    padding:7px 12px;
+    border-radius:30px;
+    font-size:.78rem;
+    font-weight:700;
+}
+
+.education-mark{
+    width:75px;
+    height:75px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eff6ff;
+    color:var(--blue);
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:800;
+    font-size:1.5rem;
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills{
+    background:white;
+}
+
+.skills-grid{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.skill-card{
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:white;
+    transition:.3s;
+}
+
+.skill-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 40px rgba(15,23,42,.08);
+    border-color:#bfdbfe;
+}
+
+.skill-icon{
+    font-size:1.5rem;
+    margin-bottom:15px;
+}
+
+.skill-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    margin-bottom:13px;
+}
+
+.skill-card p{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    background:var(--light);
+}
+
+.project-grid{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.project-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:24px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 50px rgba(15,23,42,.08);
+}
+
+.project-top{
+    height:160px;
+    background:
+        linear-gradient(135deg,#0b1728,#17365c);
+    display:flex;
+    align-items:center;
+    padding:30px;
+    color:white;
+}
+
+.project-number{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:3rem;
+    font-weight:800;
+    opacity:.25;
+}
+
+.project-content{
+    padding:30px;
+}
+
+.project-content h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.4rem;
+    margin-bottom:12px;
+}
+
+.project-content p{
+    color:var(--muted);
+    font-size:.92rem;
+}
+
+.project-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:18px 0;
+}
+
+/* =========================================================
+   RESEARCH
+========================================================= */
+
+.research{
+    background:white;
+}
+
+.research-box{
+    margin-top:45px;
+    background:linear-gradient(135deg,#08111f,#10243c);
+    border-radius:28px;
+    padding:50px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.research-box::after{
+    content:"∂";
+    position:absolute;
+    right:40px;
+    bottom:-40px;
+    font-family:serif;
+    font-size:15rem;
+    color:rgba(255,255,255,.035);
+}
+
+.research-box h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.8rem;
+    max-width:850px;
+}
+
+.research-box p{
+    color:#94a3b8;
+    max-width:850px;
+    margin-top:18px;
+}
+
+.research-tags{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.research-tags .tag{
+    background:rgba(96,165,250,.12);
+    color:#93c5fd;
+    border:1px solid rgba(96,165,250,.2);
+}
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.experience{
+    background:var(--light);
+}
+
+.timeline{
+    margin-top:45px;
+    max-width:850px;
+}
+
+.timeline-item{
+    position:relative;
+    padding:0 0 45px 35px;
+    border-left:2px solid #dbeafe;
+}
+
+.timeline-item:last-child{
+    padding-bottom:0;
+}
+
+.timeline-item::before{
+    content:"";
+    width:13px;
+    height:13px;
+    background:var(--blue);
+    border-radius:50%;
+    position:absolute;
+    left:-7px;
+    top:5px;
+    box-shadow:0 0 0 5px #eff6ff;
+}
+
+.timeline-item h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.3rem;
+}
+
+.timeline-item .role{
+    color:var(--blue);
+    font-weight:700;
+    margin:4px 0 8px;
+}
+
+.timeline-item p{
+    color:var(--muted);
+}
+
+/* =========================================================
+   AWARDS
+========================================================= */
+
+.awards{
+    background:white;
+}
+
+.awards-grid{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.award-card{
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
+    background:white;
+    transition:.3s;
+}
+
+.award-card:hover{
+    border-color:#93c5fd;
+    transform:translateY(-5px);
+}
+
+.award-icon{
+    font-size:1.7rem;
+    margin-bottom:16px;
+}
+
+.award-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    margin-bottom:7px;
+}
+
+.award-card p{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+/* =========================================================
+   CERTIFICATIONS
+========================================================= */
+
+.certifications{
+    background:var(--light);
+}
+
+.cert-grid{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.cert-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:24px;
+    min-height:150px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:.3s;
+}
+
+.cert-card:hover{
+    transform:translateY(-4px);
+    border-color:#93c5fd;
+}
+
+.cert-card .category{
+    color:var(--blue);
+    font-size:.72rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.cert-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1rem;
+    margin-top:10px;
+}
+
+.cert-card p{
+    color:var(--muted);
+    font-size:.8rem;
+    margin-top:8px;
+}
+
+/* =========================================================
+   LEADERSHIP
+========================================================= */
+
+.leadership{
+    background:white;
+}
+
+.leadership-grid{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.leadership-card{
+    padding:32px;
+    border:1px solid var(--border);
+    border-radius:22px;
+}
+
+.leadership-card h3{
+    font-family:"Space Grotesk",sans-serif;
+}
+
+.leadership-card p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* =========================================================
+   CV CTA
+========================================================= */
+
+.cv-section{
+    background:#08111f;
+    color:white;
+    text-align:center;
+}
+
+.cv-section .section-heading{
+    color:white;
+}
+
+.cv-section .section-description{
+    margin-left:auto;
+    margin-right:auto;
+    color:#94a3b8;
+}
+
+.cv-button{
+    margin-top:25px;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:white;
+}
+
+.contact-inner{
+    margin-top:45px;
+    background:var(--light);
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.contact-inner p{
+    color:var(--muted);
+    max-width:600px;
+}
+
+.socials{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#050b14;
+    color:#94a3b8;
+    padding:35px 0;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+}
+
+.footer-name{
+    color:white;
+    font-weight:800;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .profile-area{
+        order:-1;
+    }
+
+    .skills-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cert-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .awards-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    section{
+        padding:75px 0;
+    }
+
+    .hero h1{
+        font-size:4rem;
+        letter-spacing:-3px;
+    }
+
+    .hero-subtitle{
+        font-size:1.05rem;
+    }
+
+    .profile-image{
+        width:270px;
+        height:340px;
+    }
+
+    .skills-grid,
+    .project-grid,
+    .awards-grid,
+    .cert-grid,
+    .leadership-grid{
+        grid-template-columns:1fr;
+    }
+
+    .education-card{
+        grid-template-columns:1fr;
+    }
+
+    .education-mark{
+        display:none;
+    }
+
+    .research-box{
+        padding:32px;
+    }
+
+    .contact-inner,
+    .footer-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero{
+        padding-top:110px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
 
-<nav>
-    <div class="nav-container">
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-        <a href="#home" class="logo">Faiz Ahmed</a>
+<header class="navbar">
 
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#awards">Awards</a></li>
-            <li><a href="#certifications">Certificates</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+<div class="container nav-inner">
 
-    </div>
-</nav>
+<a href="#home" class="logo">
+    FAIZ<span>.</span>
+</a>
 
+<ul class="nav-links">
 
-<!-- ================= HOME ================= -->
+<li><a href="#about">About</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#research">Research</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#awards">Awards</a></li>
+<li><a href="#certifications">Certificates</a></li>
+<li><a href="#contact">Contact</a></li>
 
-<section id="home" class="hero">
+</ul>
 
-    <div class="container">
+</div>
 
-        <div class="hero-content">
-
-            <div class="hero-text">
-
-                <small>WELCOME TO MY PORTFOLIO</small>
-
-                <h1>FAIZ AHMED</h1>
-
-                <h2>
-                    BS Mathematics | Computational Mathematics |
-                    ODE & PDE | Machine Learning | Data Science
-                </h2>
-
-                <p>
-                    Mathematics student interested in Computational Mathematics,
-                    Ordinary Differential Equations, Partial Differential Equations,
-                    Numerical Methods, Mathematical Modeling, Machine Learning,
-                    Deep Learning and Data Science.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#projects" class="btn btn-primary">
-                        View My Work
-                    </a>
-
-                    <a href="#contact" class="btn btn-secondary">
-                        Contact Me
-                    </a>
-
-                </div>
-
-            </div>
+</header>
 
 
-            <div class="profile-wrapper">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-                <!--
-                Replace profile.jpg with your actual photo filename.
-                Upload your photo to the repository first.
-                -->
+<section class="hero" id="home">
 
-                <img
-                    src="profile.jpg"
-                    alt="Faiz Ahmed"
-                    class="profile-image"
-                >
+<div class="container hero-grid">
 
-            </div>
+<div>
 
-        </div>
+<span class="hero-label">
+    Mathematics × Computation × AI
+</span>
 
-    </div>
+<h1>
+    FAIZ<br>
+    <span>AHMED</span>
+</h1>
 
-</section>
+<div class="hero-subtitle">
+
+    BS Mathematics | Computational Mathematics |
+    ODE & PDE | Machine Learning | Data Science
+
+</div>
+
+<p class="hero-description">
+
+    I explore the intersection of mathematical theory,
+    computational methods and data-driven approaches —
+    from nonlinear PDEs and numerical analysis to
+    machine learning and scientific computing.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#projects" class="btn btn-primary">
+    Explore My Work →
+</a>
+
+<a href="CV.pdf" class="btn btn-outline" target="_blank">
+    View CV
+</a>
+
+</div>
+
+</div>
 
 
-<!-- ================= ABOUT ================= -->
+<div class="profile-area">
 
-<section id="about">
+<div class="profile-ring">
 
-    <div class="container">
+<img
+    src="profile.jpg"
+    alt="Faiz Ahmed"
+    class="profile-image"
+>
 
-        <div class="section-title">
-            <h2>About Me</h2>
-            <p>Mathematics, computation and data-driven methods</p>
-        </div>
+</div>
 
-        <div class="about-text">
+</div>
 
-            <p>
-                I am a BS Mathematics student with a strong interest in
-                Computational Mathematics, Ordinary Differential Equations (ODEs),
-                Partial Differential Equations (PDEs), Nonlinear PDEs,
-                Numerical Analysis and Mathematical Modeling.
-            </p>
-
-            <br>
-
-            <p>
-                Alongside my mathematical studies, I am developing skills in
-                Machine Learning, Deep Learning, Data Analysis and Scientific
-                Computing. My interests lie at the intersection of mathematical
-                reasoning and computational methods, where mathematical concepts
-                can be applied to complex scientific and data-driven problems.
-            </p>
-
-            <br>
-
-            <p>
-                Through academic projects, research work, internships,
-                competitions and technical learning, I am building a
-                multidisciplinary profile combining mathematics,
-                computational methods and modern data-driven techniques.
-            </p>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= EDUCATION ================= -->
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
-<section id="education">
+<section class="about" id="about">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Education</h2>
-            <p>Academic background and mathematical focus</p>
-        </div>
+<div class="about-grid">
 
-        <div class="card education-card">
+<div>
 
-            <h3>Sukkur IBA University</h3>
+<div class="section-label">01 — About</div>
 
-            <div class="degree">
-                BS Mathematics
-            </div>
+<h2 class="section-heading">
+    Mathematics with a computational perspective.
+</h2>
 
-            <p>
-                Focused on Computational Mathematics and mathematical
-                approaches to scientific and computational problems.
-            </p>
-
-            <div class="focus-list">
-
-                <span class="tag">Computational Mathematics</span>
-                <span class="tag">ODE</span>
-                <span class="tag">PDE</span>
-                <span class="tag">Nonlinear PDE</span>
-                <span class="tag">Numerical Analysis</span>
-                <span class="tag">Numerical Methods</span>
-                <span class="tag">Mathematical Modeling</span>
-                <span class="tag">Scientific Computing</span>
-                <span class="tag">Machine Learning</span>
-                <span class="tag">Deep Learning</span>
-                <span class="tag">Data Analysis</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- ================= SKILLS ================= -->
+<div class="about-text">
 
-<section id="skills">
+<p class="about-intro">
 
-    <div class="container">
+    I am a BS Mathematics student developing a
+    multidisciplinary profile across computational mathematics,
+    differential equations and machine learning.
 
-        <div class="section-title">
-            <h2>Skills</h2>
-            <p>Mathematical, computational and technical skills</p>
-        </div>
+</p>
 
-        <div class="skills-grid">
+<p>
 
-            <div class="card skill-card">
+    My mathematical interests include Computational Mathematics,
+    Ordinary Differential Equations (ODEs), Partial Differential
+    Equations (PDEs), Nonlinear PDEs, Numerical Analysis,
+    Numerical Methods and Mathematical Modeling.
 
-                <h3>Mathematics</h3>
+</p>
 
-                <ul>
-                    <li>Computational Mathematics</li>
-                    <li>ODEs</li>
-                    <li>PDEs</li>
-                    <li>Nonlinear PDEs</li>
-                    <li>Numerical Analysis</li>
-                    <li>Mathematical Modeling</li>
-                    <li>Scientific Computing</li>
-                </ul>
+<p>
 
-            </div>
+    Alongside mathematics, I am developing practical skills in
+    Machine Learning, Deep Learning, Data Analysis and Scientific
+    Computing. I enjoy using mathematical reasoning together with
+    computational tools to investigate complex problems.
 
+</p>
 
-            <div class="card skill-card">
+</div>
 
-                <h3>Machine Learning</h3>
+</div>
 
-                <ul>
-                    <li>Machine Learning</li>
-                    <li>Supervised Learning</li>
-                    <li>Feature Engineering</li>
-                    <li>Model Evaluation</li>
-                    <li>Data Preprocessing</li>
-                    <li>Classification</li>
-                    <li>Dimensionality Reduction</li>
-                </ul>
-
-            </div>
-
-
-            <div class="card skill-card">
-
-                <h3>Deep Learning</h3>
-
-                <ul>
-                    <li>Neural Networks</li>
-                    <li>Deep Learning</li>
-                    <li>TensorFlow / Keras</li>
-                    <li>Model Training</li>
-                    <li>Model Evaluation</li>
-                </ul>
-
-            </div>
-
-
-            <div class="card skill-card">
-
-                <h3>Data Analysis</h3>
-
-                <ul>
-                    <li>Python Data Analysis</li>
-                    <li>Pandas</li>
-                    <li>NumPy</li>
-                    <li>Data Visualization</li>
-                    <li>Matplotlib</li>
-                    <li>Statistical Analysis</li>
-                </ul>
-
-            </div>
-
-
-            <div class="card skill-card">
-
-                <h3>Programming</h3>
-
-                <ul>
-                    <li>Python</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Git & GitHub</li>
-                </ul>
-
-            </div>
-
-
-            <div class="card skill-card">
-
-                <h3>Technical Tools</h3>
-
-                <ul>
-                    <li>LaTeX</li>
-                    <li>Jupyter Notebook</li>
-                    <li>Google Colab</li>
-                    <li>Scikit-learn</li>
-                    <li>SciPy</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
 
-<section id="projects">
+<section class="education" id="education">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Projects</h2>
-            <p>Selected academic and technical projects</p>
-        </div>
+<div class="section-label">02 — Education</div>
 
-        <div class="projects-grid">
+<h2 class="section-heading">
+    Academic Foundation
+</h2>
 
-            <div class="card project-card">
-
-                <h3>Complex Potential and Flow Past a Cylinder</h3>
-
-                <p>
-                    An applied mathematics project involving complex potential
-                    methods and mathematical analysis of flow around a cylinder.
-                </p>
-
-                <div class="project-tech">
-                    <span class="tag">Complex Analysis</span>
-                    <span class="tag">Applied Mathematics</span>
-                </div>
-
-                <a href="#" class="btn btn-secondary">
-                    Project Details
-                </a>
-
-            </div>
+<p class="section-description">
+    Building a strong foundation in mathematics while developing
+    computational and data-driven skills.
+</p>
 
 
-            <div class="card project-card">
+<div class="education-card">
 
-                <h3>Machine Learning Projects</h3>
+<div>
 
-                <p>
-                    A collection of machine learning projects involving
-                    data preprocessing, model development, evaluation and
-                    data-driven prediction.
-                </p>
+<h3>Sukkur IBA University</h3>
 
-                <div class="project-tech">
-                    <span class="tag">Python</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Scikit-learn</span>
-                </div>
+<div class="degree">
+    BS Mathematics
+</div>
 
-                <a href="#" class="btn btn-secondary">
-                    GitHub
-                </a>
-
-            </div>
+<p>
+    Academic focus in Computational Mathematics,
+    differential equations, numerical methods and
+    mathematical modeling.
+</p>
 
 
-            <div class="card project-card">
+<div class="education-tags">
 
-                <h3>Deep Learning Projects</h3>
+<span class="tag">Computational Mathematics</span>
+<span class="tag">ODE</span>
+<span class="tag">PDE</span>
+<span class="tag">Nonlinear PDE</span>
+<span class="tag">Numerical Analysis</span>
+<span class="tag">Numerical Methods</span>
+<span class="tag">Mathematical Modeling</span>
+<span class="tag">Scientific Computing</span>
 
-                <p>
-                    Deep learning projects focused on neural networks,
-                    model training and evaluation.
-                </p>
+</div>
 
-                <div class="project-tech">
-                    <span class="tag">Python</span>
-                    <span class="tag">TensorFlow</span>
-                    <span class="tag">Deep Learning</span>
-                </div>
-
-                <a href="#" class="btn btn-secondary">
-                    View Project
-                </a>
-
-            </div>
+</div>
 
 
-            <div class="card project-card">
+<div class="education-mark">
+    MATH
+</div>
 
-                <h3>Data Analysis Projects</h3>
+</div>
 
-                <p>
-                    Data analysis projects involving preprocessing,
-                    visualization, statistical analysis and interpretation.
-                </p>
-
-                <div class="project-tech">
-                    <span class="tag">Python</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">Matplotlib</span>
-                </div>
-
-                <a href="#" class="btn btn-secondary">
-                    View Project
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= RESEARCH ================= -->
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
-<section id="research">
+<section class="skills" id="skills">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Research & FYP</h2>
-            <p>Mathematical and computational research interests</p>
-        </div>
+<div class="section-label">03 — Skills</div>
 
-        <div class="card research-card">
+<h2 class="section-heading">
+    What I Work With
+</h2>
 
-            <h3>
-                Riemann Problem for the Dusty Gas Two-Phase Flow Model
-                with Non-ideal Equation of State and PCA-Based Wave
-                Pattern Classification
-            </h3>
+<p class="section-description">
+    A combination of mathematical foundations and modern
+    computational technologies.
+</p>
 
-            <p>
-                My current research work focuses on the Riemann problem
-                for a dusty gas two-phase flow model with a non-ideal
-                equation of state. The work combines nonlinear PDE theory,
-                exact solutions, numerical methods and computational analysis.
-            </p>
 
-            <br>
+<div class="skills-grid">
 
-            <div class="focus-list">
 
-                <span class="tag">Riemann Problem</span>
-                <span class="tag">Nonlinear PDE</span>
-                <span class="tag">Two-Phase Flow</span>
-                <span class="tag">Numerical Methods</span>
-                <span class="tag">Non-ideal EOS</span>
-                <span class="tag">PCA</span>
+<div class="skill-card">
 
-            </div>
+<div class="skill-icon">∫</div>
 
-        </div>
+<h3>Mathematics</h3>
 
-    </div>
+<p>
+Computational Mathematics, ODEs, PDEs, Nonlinear PDEs,
+Numerical Analysis, Numerical Methods and Mathematical Modeling.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">λ</div>
+
+<h3>Machine Learning</h3>
+
+<p>
+Data preprocessing, supervised learning, feature engineering,
+classification, dimensionality reduction and model evaluation.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">◈</div>
+
+<h3>Deep Learning</h3>
+
+<p>
+Neural networks, deep learning workflows, model training,
+evaluation and practical experimentation.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">▦</div>
+
+<h3>Data Analysis</h3>
+
+<p>
+Python-based data analysis, Pandas, NumPy, visualization,
+statistics and exploratory data analysis.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">&lt;/&gt;</div>
+
+<h3>Programming</h3>
+
+<p>
+Python, HTML, CSS, JavaScript and Git/GitHub workflows.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">⚙</div>
+
+<h3>Scientific Tools</h3>
+
+<p>
+Google Colab, Jupyter Notebook, LaTeX, Scikit-learn,
+SciPy, TensorFlow and Keras.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ================= EXPERIENCE ================= -->
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
 
-<section id="experience">
+<section class="projects" id="projects">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Experience</h2>
-            <p>Internships and professional experience</p>
-        </div>
+<div class="section-label">04 — Projects</div>
 
-        <div class="timeline">
+<h2 class="section-heading">
+    Selected Work
+</h2>
 
-            <div class="timeline-item">
-
-                <h3>Machine Learning Engineering Internship</h3>
-
-                <p>
-                    Worked on machine learning and data-related tasks,
-                    developing practical experience with Python,
-                    data preprocessing and machine learning workflows.
-                </p>
-
-            </div>
+<p class="section-description">
+    Academic, mathematical, machine learning and data-driven projects.
+</p>
 
 
-            <div class="timeline-item">
+<div class="project-grid">
 
-                <h3>Python Programming Internship</h3>
 
-                <p>
-                    Developed practical programming skills using Python
-                    through hands-on tasks and projects.
-                </p>
+<div class="project-card">
 
-            </div>
+<div class="project-top">
+    <div class="project-number">01</div>
+</div>
 
-        </div>
+<div class="project-content">
 
-    </div>
+<h3>
+    Complex Potential & Flow Past a Cylinder
+</h3>
+
+<p>
+    An applied mathematics project exploring complex potential
+    methods and mathematical analysis of flow around a cylinder.
+</p>
+
+<div class="project-tags">
+<span class="tag">Complex Analysis</span>
+<span class="tag">Applied Mathematics</span>
+</div>
+
+<a href="#" class="btn btn-outline">
+    Project Details
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project-card">
+
+<div class="project-top">
+    <div class="project-number">02</div>
+</div>
+
+<div class="project-content">
+
+<h3>
+    Machine Learning Projects
+</h3>
+
+<p>
+    Practical machine learning work involving preprocessing,
+    model development, evaluation and data-driven prediction.
+</p>
+
+<div class="project-tags">
+<span class="tag">Python</span>
+<span class="tag">Scikit-learn</span>
+<span class="tag">ML</span>
+</div>
+
+<a href="#" class="btn btn-outline">
+    GitHub →
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project-card">
+
+<div class="project-top">
+    <div class="project-number">03</div>
+</div>
+
+<div class="project-content">
+
+<h3>
+    Deep Learning Projects
+</h3>
+
+<p>
+    Neural-network based projects exploring model training,
+    prediction and evaluation.
+</p>
+
+<div class="project-tags">
+<span class="tag">Python</span>
+<span class="tag">TensorFlow</span>
+<span class="tag">Deep Learning</span>
+</div>
+
+<a href="#" class="btn btn-outline">
+    View Project →
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project-card">
+
+<div class="project-top">
+    <div class="project-number">04</div>
+</div>
+
+<div class="project-content">
+
+<h3>
+    Data Analysis Projects
+</h3>
+
+<p>
+    Data-driven projects involving preprocessing,
+    exploratory analysis, visualization and interpretation.
+</p>
+
+<div class="project-tags">
+<span class="tag">Pandas</span>
+<span class="tag">NumPy</span>
+<span class="tag">Matplotlib</span>
+</div>
+
+<a href="#" class="btn btn-outline">
+    View Project →
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ================= HONORS ================= -->
+<!-- =========================================================
+     RESEARCH
+========================================================= -->
 
-<section id="awards">
+<section class="research" id="research">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Honors & Awards</h2>
-            <p>Competitions, rankings and academic achievements</p>
-        </div>
+<div class="section-label">05 — Research</div>
 
-        <div class="awards-grid">
+<h2 class="section-heading">
+    Research & FYP
+</h2>
 
-            <div class="card award-card">
-
-                <div class="award-icon">🥈</div>
-
-                <h3>TechNova 2026</h3>
-
-                <p>
-                    2nd Position — Maths Mania Advanced
-                </p>
-
-            </div>
+<p class="section-description">
+    Exploring nonlinear PDEs, exact solutions, numerical methods
+    and computational analysis.
+</p>
 
 
-            <div class="card award-card">
+<div class="research-box">
 
-                <div class="award-icon">🏆</div>
+<h3>
+Riemann Problem for the Dusty Gas Two-Phase Flow Model
+with Non-ideal Equation of State and PCA-Based Wave Pattern Classification
+</h3>
 
-                <h3>National Mathematics Achievement</h3>
+<p>
 
-                <p>
-                    Mathematics competition achievement
-                </p>
+My current research focuses on the Riemann problem for a
+dusty gas two-phase flow model with a non-ideal equation of
+state. The work combines nonlinear PDE theory, exact solutions,
+numerical methods and computational analysis.
 
-            </div>
-
-
-            <div class="card award-card">
-
-                <div class="award-icon">🌎</div>
-
-                <h3>IAAC</h3>
-
-                <p>
-                    Top 25% World Ranking
-                </p>
-
-            </div>
+</p>
 
 
-            <div class="card award-card">
+<div class="research-tags">
 
-                <div class="award-icon">📜</div>
+<span class="tag">Riemann Problem</span>
+<span class="tag">Nonlinear PDE</span>
+<span class="tag">Two-Phase Flow</span>
+<span class="tag">Non-ideal EOS</span>
+<span class="tag">Numerical Methods</span>
+<span class="tag">PCA</span>
 
-                <h3>IYMC</h3>
+</div>
 
-                <p>
-                    Qualification Round 2025
-                </p>
+</div>
 
-            </div>
-
-
-            <div class="card award-card">
-
-                <div class="award-icon">⭐</div>
-
-                <h3>GQMC</h3>
-
-                <p>
-                    Special Honor
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= CERTIFICATIONS ================= -->
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
 
-<section id="certifications">
+<section class="experience" id="experience">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Certifications</h2>
-            <p>Professional learning and technical development</p>
-        </div>
+<div class="section-label">06 — Experience</div>
 
-        <p class="certificate-note">
-            My certification collection covers Machine Learning,
-            Deep Learning, Mathematics, Programming, Data Science,
-            LaTeX, English and other professional learning areas.
-        </p>
+<h2 class="section-heading">
+    Experience
+</h2>
 
 
-        <div class="card cert-category">
-
-            <h3>Machine Learning</h3>
-
-            <div class="focus-list">
-                <span class="tag">Machine Learning Certificates</span>
-                <span class="tag">AI Certificates</span>
-            </div>
-
-        </div>
+<div class="timeline">
 
 
-        <div class="card cert-category">
+<div class="timeline-item">
 
-            <h3>Deep Learning</h3>
+<h3>
+Machine Learning Engineering Internship
+</h3>
 
-            <div class="focus-list">
-                <span class="tag">Deep Learning</span>
-                <span class="tag">Neural Networks</span>
-            </div>
+<div class="role">
+Machine Learning / Data
+</div>
 
-        </div>
+<p>
+Practical experience working with machine learning,
+Python, data preprocessing and computational workflows.
+</p>
 
-
-        <div class="card cert-category">
-
-            <h3>Mathematics</h3>
-
-            <div class="focus-list">
-                <span class="tag">Mathematics</span>
-                <span class="tag">Numerical Methods</span>
-                <span class="tag">Mathematical Modeling</span>
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="card cert-category">
+<div class="timeline-item">
 
-            <h3>Programming</h3>
+<h3>
+Python Programming Internship
+</h3>
 
-            <div class="focus-list">
-                <span class="tag">Python</span>
-                <span class="tag">Programming</span>
-            </div>
+<div class="role">
+Python Development
+</div>
 
-        </div>
+<p>
+Developed practical programming experience through
+Python-based tasks and projects.
+</p>
 
-
-        <div class="card cert-category">
-
-            <h3>Data Science & Analysis</h3>
-
-            <div class="focus-list">
-                <span class="tag">Data Science</span>
-                <span class="tag">Data Analysis</span>
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="card cert-category">
+</div>
 
-            <h3>LaTeX & Technical Skills</h3>
-
-            <div class="focus-list">
-                <span class="tag">LaTeX</span>
-                <span class="tag">Technical Writing</span>
-            </div>
-
-        </div>
-
-
-        <div class="card cert-category">
-
-            <h3>English & Language</h3>
-
-            <div class="focus-list">
-                <span class="tag">English Proficiency</span>
-                <span class="tag">IELTS / Language</span>
-            </div>
-
-        </div>
-
-
-        <div class="card cert-category">
-
-            <h3>Other Professional Certificates</h3>
-
-            <div class="focus-list">
-                <span class="tag">Professional Development</span>
-                <span class="tag">Other Programs</span>
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= LEADERSHIP ================= -->
+<!-- =========================================================
+     AWARDS
+========================================================= -->
 
-<section id="leadership">
+<section class="awards" id="awards">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
-            <h2>Leadership & Volunteering</h2>
-            <p>Leadership, organizational and community involvement</p>
-        </div>
+<div class="section-label">07 — Recognition</div>
 
-        <div class="leadership-grid">
+<h2 class="section-heading">
+    Honors & Awards
+</h2>
 
-            <div class="card">
-
-                <h3>Mathematics Society</h3>
-
-                <p>
-                    Executive member involved in student activities,
-                    mathematical engagement and organizational work.
-                </p>
-
-            </div>
+<p class="section-description">
+    Competitions, academic recognition and achievements.
+</p>
 
 
-            <div class="card">
-
-                <h3>Ambassador & Volunteer Experience</h3>
-
-                <p>
-                    Participated in ambassadorial, volunteer and
-                    organizational activities.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+<div class="awards-grid">
 
 
-<!-- ================= CV ================= -->
+<div class="award-card">
 
-<section id="cv">
+<div class="award-icon">🥈</div>
 
-    <div class="container">
+<h3>
+TechNova 2026
+</h3>
 
-        <div class="section-title">
-            <h2>Curriculum Vitae</h2>
-            <p>My professional resume</p>
-        </div>
+<p>
+2nd Position — Maths Mania Advanced
+</p>
 
-        <div style="text-align:center;">
-
-            <!-- Upload your CV as CV.pdf to the repository -->
-
-            <a href="CV.pdf" class="btn btn-primary" target="_blank">
-                View / Download CV
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- ================= CONTACT ================= -->
+<div class="award-card">
 
-<section id="contact">
+<div class="award-icon">🏆</div>
 
-    <div class="container">
+<h3>
+National Mathematics Achievement
+</h3>
 
-        <div class="section-title">
-            <h2>Contact Me</h2>
-            <p>Let's connect professionally</p>
-        </div>
+<p>
+Mathematics competition achievement
+</p>
 
-        <div class="card contact-box">
+</div>
 
-            <p>
-                I am interested in mathematical research,
-                computational mathematics, machine learning,
-                data science and related opportunities.
-            </p>
 
-            <div class="contact-links">
+<div class="award-card">
 
-                <!-- Replace these links with your actual profiles -->
+<div class="award-icon">🌎</div>
 
-                <a href="https://github.com/" class="btn btn-secondary" target="_blank">
-                    GitHub
-                </a>
+<h3>
+IAAC
+</h3>
 
-                <a href="https://www.linkedin.com/in/faiz-ahmed-2065a9322/"
-                   class="btn btn-secondary"
-                   target="_blank">
-                    LinkedIn
-                </a>
+<p>
+Top 25% World Ranking
+</p>
 
-                <a href="mailto:YOUR_EMAIL@example.com"
-                   class="btn btn-primary">
-                    Email Me
-                </a>
+</div>
 
-            </div>
 
-        </div>
+<div class="award-card">
 
-    </div>
+<div class="award-icon">📜</div>
+
+<h3>
+IYMC
+</h3>
+
+<p>
+Qualification Round 2025
+</p>
+
+</div>
+
+
+<div class="award-card">
+
+<div class="award-icon">⭐</div>
+
+<h3>
+GQMC
+</h3>
+
+<p>
+Special Honor
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================================================
+     CERTIFICATIONS
+========================================================= -->
+
+<section class="certifications" id="certifications">
+
+<div class="container">
+
+<div class="section-label">08 — Certifications</div>
+
+<h2 class="section-heading">
+    Learning & Certifications
+</h2>
+
+<p class="section-description">
+    Organized by area so visitors can quickly understand
+    your technical and academic development.
+</p>
+
+
+<div class="cert-grid">
+
+
+<div class="cert-card">
+
+<div class="category">
+Machine Learning
+</div>
+
+<h3>
+Machine Learning & AI
+</h3>
+
+<p>
+Courses and professional training in machine learning.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Deep Learning
+</div>
+
+<h3>
+Deep Neural Networks
+</h3>
+
+<p>
+Deep learning and neural network training.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Mathematics
+</div>
+
+<h3>
+Mathematical Learning
+</h3>
+
+<p>
+Mathematics, numerical methods and modeling.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Programming
+</div>
+
+<h3>
+Python & Programming
+</h3>
+
+<p>
+Programming and Python-based technical courses.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Data Science
+</div>
+
+<h3>
+Data Analysis
+</h3>
+
+<p>
+Data science, analysis and visualization.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Technical
+</div>
+
+<h3>
+LaTeX
+</h3>
+
+<p>
+Technical documentation and scientific writing.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Language
+</div>
+
+<h3>
+English & Language
+</h3>
+
+<p>
+English proficiency and language-related certificates.
+</p>
+
+</div>
+
+
+<div class="cert-card">
+
+<div class="category">
+Other
+</div>
+
+<h3>
+Professional Development
+</h3>
+
+<p>
+Other programs, workshops and professional learning.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     LEADERSHIP
+========================================================= -->
+
+<section class="leadership" id="leadership">
+
+<div class="container">
+
+<div class="section-label">09 — Leadership</div>
+
+<h2 class="section-heading">
+    Leadership & Volunteering
+</h2>
+
+
+<div class="leadership-grid">
+
+
+<div class="leadership-card">
+
+<h3>
+Mathematics Society
+</h3>
+
+<p>
+Executive member involved in student activities,
+mathematical engagement and organizational work.
+</p>
+
+</div>
+
+
+<div class="leadership-card">
+
+<h3>
+Ambassador & Volunteer Experience
+</h3>
+
+<p>
+Participation in ambassadorial, volunteer and
+organizational activities.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CV
+========================================================= -->
+
+<section class="cv-section" id="cv">
+
+<div class="container">
+
+<div class="section-label">
+10 — Curriculum Vitae
+</div>
+
+<h2 class="section-heading">
+    Want the complete profile?
+</h2>
+
+<p class="section-description">
+    Download my CV for a concise overview of my education,
+    skills, experience and achievements.
+</p>
+
+<div class="cv-button">
+
+<a href="CV.pdf" class="btn btn-primary" target="_blank">
+    View / Download CV →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="section-label">
+11 — Contact
+</div>
+
+<h2 class="section-heading">
+    Let's Connect
+</h2>
+
+<div class="contact-inner">
+
+<div>
+
+<h3>
+Interested in mathematics, computation & AI?
+</h3>
+
+<p>
+I am interested in mathematical research, computational
+mathematics, machine learning, data science and related
+academic or professional opportunities.
+</p>
+
+</div>
+
+
+<div class="socials">
+
+<a
+href="https://www.linkedin.com/in/faiz-ahmed-2065a9322/"
+target="_blank"
+class="btn btn-primary">
+LinkedIn
+</a>
+
+<a
+href="https://github.com/"
+target="_blank"
+class="btn btn-outline">
+GitHub
+</a>
+
+<a
+href="mailto:YOUR_EMAIL@example.com"
+class="btn btn-outline">
+Email
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-    <p>
-        © 2026 <strong>Faiz Ahmed</strong>.
-        All rights reserved.
-    </p>
+<div class="container footer-inner">
 
-    <p>
-        Mathematics • Computational Mathematics • Machine Learning • Data Science
-    </p>
+<div>
+
+<div class="footer-name">
+FAIZ AHMED
+</div>
+
+<p>
+BS Mathematics • Computational Mathematics • Machine Learning
+</p>
+
+</div>
+
+<div>
+© 2026 Faiz Ahmed
+</div>
+
+</div>
 
 </footer>
+
 
 </body>
 </html>
